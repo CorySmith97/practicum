@@ -1,0 +1,750 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Practicum</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">2.</strong> Our Divine Identity</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">3.</strong> The Power of Jesus Christ and your Covenants</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">4.</strong> Let God Preveil and Follow his Prophets</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">5.</strong> Teaching Truth with Love</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">6.</strong> Take Charge of Your Testimony</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">7.</strong> Repetance is Joyful</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">8.</strong> Diligence in Gospel Living</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">9.</strong> Scriptures, the Font of Living Water</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Practicum</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<h2 id="cory-smith"><a class="header" href="#cory-smith">Cory Smith</a></h2>
+<p>This is my practicum final for REL333</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="our-divine-identity"><a class="header" href="#our-divine-identity">Our Divine Identity</a></h1>
+<p>3/6 living</p>
+<p>MISSING 5</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<h3 id="president-nelson-october-2017-general-conference-the-book-of-mormon-where-would-your-life-be-without-it"><a class="header" href="#president-nelson-october-2017-general-conference-the-book-of-mormon-where-would-your-life-be-without-it">President Nelson: October 2017 General Conference| The Book Of Mormon, Where Would Your Life Be Without It</a></h3>
+<pre><code>Something powerful happens when a child of God seeks to know more about Him
+and His Beloved Son. Nowhere are those truths taught more clearly and powerfully
+than in the Book of Mormon.
+</code></pre>
+<h3 id="elder-renlund-april-2022-general-conference--your-divine-nature-and-eternal-destiny"><a class="header" href="#elder-renlund-april-2022-general-conference--your-divine-nature-and-eternal-destiny">Elder Renlund: April 2022 General Conference | Your Divine Nature and Eternal Destiny</a></h3>
+<pre><code>This is intrinsic to who we are. It is spiritually
+“genetic,” inherited from our heavenly parents,
+and requires no effort on our part. This is our most
+important identity, regardless of how else we choose to 
+identify ourselves. Understanding this profound truth is
+important for everyone but especially for individuals belonging
+to groups who have been historically marginalized, oppressed, 
+or subjugated. Remember that your most important 
+identity relates to your divine nature as a child of God.
+</code></pre>
+<h3 id="president-nelson-april-2012-general-conferece--thanks-be-to-god"><a class="header" href="#president-nelson-april-2012-general-conferece--thanks-be-to-god">President Nelson: April 2012 General Conferece | Thanks Be to God</a></h3>
+<pre><code>Our Heavenly Father loves His children. He has blessed
+each with physical and spiritual gifts. Let me speak of each type.
+When you sing “I Am a Child of God,” think of His gift to you of
+your own physical body. The many amazing attributes
+of your body attest to your own “divine nature.”
+</code></pre>
+<h3 id=""><a class="header" href="#"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-1"><a class="header" href="#-1"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-2"><a class="header" href="#-2"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-3"><a class="header" href="#-3"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-4"><a class="header" href="#-4"></a></h3>
+<pre><code>
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-power-of-jesus-christ-and-your-covenants"><a class="header" href="#the-power-of-jesus-christ-and-your-covenants">The Power of Jesus Christ and your Covenants</a></h1>
+<p>DONE</p>
+<h2 id="summary-1"><a class="header" href="#summary-1">Summary</a></h2>
+<p>God gives us covenants to push us to become more than we otherwise would be. The covenant
+path is a way to open the heavens to bless us in our mortal existence. Our covenants
+are what allow us to become more perfect, and are the only way that we can one day become
+like our beloved Father in Heaven or our Savior. The covenant path is also not an exclusive
+thing, but rather anyone who is willing to accept and follow it can receive of the same blessings.
+It is part of our job as disciples who are walking the covenant path to extend our arms
+and raise our voices to find those whom are lost in this world and invite them to walk the path
+of happiness with us. Additionally if we ever step off the path God is waiting for us to get back on.
+He will help us to do so, and will be patient for however long that process takes.</p>
+<h3 id="president-oaks-oct-2023-general-conference--kingdoms-of-glory"><a class="header" href="#president-oaks-oct-2023-general-conference--kingdoms-of-glory">President Oaks: Oct 2023 General Conference | Kingdoms of Glory</a></h3>
+<pre><code>From such teachings we conclude that the Final Judgment
+is not just an evaluation of a sum total of good and 
+evil acts—what we have done. It is based on the final 
+effect of our acts and thoughts—what we have become.
+We qualify for eternal life through a process of conversion.
+As used here, this word of many meanings signifies a profound change of nature. 
+It is not enough for anyone just to go through the motions. 
+The commandments, ordinances, and covenants of the gospel are not a 
+list of deposits required to be made in some heavenly account. 
+The gospel of Jesus Christ is a plan that shows us how to become
+what our Heavenly Father desires us to become.
+</code></pre>
+<h3 id="elder-gong-april-2022-general-conference--we-each-have-a-story"><a class="header" href="#elder-gong-april-2022-general-conference--we-each-have-a-story">Elder Gong: April 2022 General Conference | We Each Have a Story</a></h3>
+<pre><code>God wants our families to be happy and forever.
+Forever is too long if we make each other unhappy.
+Happy is too short if cherished relationships stop with this
+life. Through sacred covenants, Jesus Christ offers His love,
+power, and grace to change us18 and heal our relationships. 
+Selfless temple service for dear ones makes our Savior’s
+Atonement real for them and us. Sanctified, we can return
+home to God’s presence as families united eternally.
+</code></pre>
+<h3 id="elder-utchdorf-april-2021--god-among-us"><a class="header" href="#elder-utchdorf-april-2021--god-among-us">Elder Utchdorf: April 2021 | God Among Us</a></h3>
+<pre><code>Because of God’s perfect love for us and the eternal sacrifice of 
+Jesus Christ, our sins—both great and small—can be blotted out and remembered no more.
+We can stand before Him pure, worthy, and sanctified.
+</code></pre>
+<h3 id="president-erying-oct-2021-general-conference--the-faith-to-ask-and-then-to-act"><a class="header" href="#president-erying-oct-2021-general-conference--the-faith-to-ask-and-then-to-act">President Erying: Oct 2021 General Conference | The Faith to Ask and Then to Act</a></h3>
+<pre><code>If your faith in Jesus Christ has led to a heart
+softened through the effects of His Atonement, you will
+be more able to feel the whisperings of the Spirit in answer 
+to your prayers. My personal experience is that the still, 
+small voice—which is real—is clear and discernible in my mind
+when I feel an internal quiet and submission to the
+Lord’s will. That feeling of humility can be 
+best described as “Not my will, but thine, be done.”
+</code></pre>
+<h3 id="elder-rasband-oct-2020-general-conference--recommended-to-the-lord"><a class="header" href="#elder-rasband-oct-2020-general-conference--recommended-to-the-lord">Elder Rasband: Oct 2020 General Conference | Recommended to the Lord</a></h3>
+<pre><code>To be “recommended to the Lord” is to be reminded of what 
+is expected of a covenant-keeping Latter-day Saint. My 
+father-in-law, Blaine, saw it as invaluable preparation 
+for the day when he would humbly stand before the Lord.
+</code></pre>
+<h3 id="elder-christofferson-april-2021-general-conference--why-the-covenant-path"><a class="header" href="#elder-christofferson-april-2021-general-conference--why-the-covenant-path">Elder Christofferson: April 2021 General Conference | Why the Covenant Path</a></h3>
+<pre><code>Elder J. Golden Kimball is purported to have said,
+“I may not have [always] walked the straight and narrow,
+but I [try] to cross it as often as I [can].”5 In a more
+serious moment, I am sure Brother Kimball would agree that
+staying on, not just crossing, the covenant path is our
+greatest hope for avoiding avoidable misery on the one hand and successfully 
+dealing with the unavoidable woes of life on the other.
+</code></pre>
+<h3 id="elder-holland-april-2016-general-conference--tomorrow-the-lord-will-do-wonders-among-you"><a class="header" href="#elder-holland-april-2016-general-conference--tomorrow-the-lord-will-do-wonders-among-you">Elder Holland: April 2016 General Conference | Tomorrow the Lord will Do Wonders Among You</a></h3>
+<pre><code>When there was a controversy in the early Church regarding who was
+entitled to heaven’s blessings and who wasn’t, the Lord declared to the
+Prophet Joseph Smith, “Verily I say unto you, [the gifts of God] are 
+given for the benefit of those who love me and keep … my commandments, 
+and [for them] that seeketh so to do.” Boy, aren’t we all thankful for that
+added provision “and … seeketh so to do”! That has been a lifesaver because
+sometimes that is all we can offer! We take some solace in the fact that if
+God were to reward only the perfectly faithful, He wouldn’t have much of a distribution list.
+</code></pre>
+<h3 id="elder-renlund-april-2016-general-conference--that-i-might-draw-all-men-unto-me"><a class="header" href="#elder-renlund-april-2016-general-conference--that-i-might-draw-all-men-unto-me">Elder Renlund: April 2016 General Conference | "That I Might Draw All Men Unto Me"</a></h3>
+<pre><code>The closer we are to Jesus Christ in the thoughts and intents of our hearts,
+the more we appreciate His innocent suffering, the more grateful we are for 
+grace and forgiveness, and the more we want to repent and become like Him. 
+Our absolute distance from Heavenly Father and Jesus Christ is important, 
+but the direction we are heading is even more crucial. God is more pleased 
+with repentant sinners who are trying to draw closer to Him than with self-righteous, faultfinding individuals who, 
+like the Pharisees and scribes of old, do not realize how badly they need to repent.
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="let-god-preveil-and-follow-his-prophets"><a class="header" href="#let-god-preveil-and-follow-his-prophets">Let God Preveil and Follow his Prophets</a></h1>
+<p>DONE</p>
+<h2 id="summary-2"><a class="header" href="#summary-2">Summary</a></h2>
+<p>In this life, God wants nothing more than to be our biggest fan and to support us.
+He has provided a median for us to truly succeed. This includes following his voice piece.
+Prophets have been provided out of love to help us to follow God and get better
+support from him. In order to do this however it requires work from us. Some of these
+aspects are not easy however. If we want to let God prevail in our lives, this requires us
+to be willing to be chastened. For God chastises those he loves. That includes us. Letting
+God prevail requires work and sometimes growth in order to receive more love and fulfillment.
+The only way to end this life and return with him is to let him prevail here while we are
+in the time of our trial, but it is something that will bring us joy as we work towards it.</p>
+<h3 id="president-nelson-april-2022-general-conference--the-power-of-spiritual-momentum"><a class="header" href="#president-nelson-april-2022-general-conference--the-power-of-spiritual-momentum">President Nelson: April 2022 General Conference | The Power of Spiritual Momentum</a></h3>
+<pre><code>With frightening speed, a testimony that is not
+nourished daily “by the good word of God” can crumble.
+Thus, the antidote to Satan’s scheme is clear: we need daily
+experiences worshipping the Lord and studying His gospel.
+I plead with you to let God prevail in your life. 
+Give Him a fair share of your time. As you do, 
+notice what happens to your positive spiritual momentum.
+</code></pre>
+<h3 id="elder-anderson-april-2020-general-conference--spiritually-defining-moments"><a class="header" href="#elder-anderson-april-2020-general-conference--spiritually-defining-moments">Elder Anderson: April 2020 General Conference | Spiritually Defining Moments</a></h3>
+<pre><code>Embrace your sacred memories. Believe them. Write
+them down. Share them with your family. Trust that
+they come to you from your Heavenly Father and His 
+Beloved Son. Let them bring patience to your doubts 
+and understanding to your difficulties. I promise you
+that as you willingly acknowledge and carefully treasure
+the spiritually defining events in your life, more and more will come 
+to you. Heavenly Father knows you and loves you!
+</code></pre>
+<h3 id="elder-christofferson-oct-2021-general-conference--the-love-of-god"><a class="header" href="#elder-christofferson-oct-2021-general-conference--the-love-of-god">Elder Christofferson: Oct 2021 General Conference | The Love of God</a></h3>
+<pre><code>This divine love should give us abundant
+comfort and confidence as we pray to the Father in
+the name of Christ. Not one of us is a stranger to Them.
+We need not hesitate to call upon God, even when we feel
+unworthy. We can rely on the mercy and merits of Jesus 
+Christ to be heard.6 As we abide in God’s love, we depend
+less and less on the approval of others to guide us.
+</code></pre>
+<h3 id="president-monson-april-2012-general-conference--the-race-of-life"><a class="header" href="#president-monson-april-2012-general-conference--the-race-of-life">President Monson: April 2012 General Conference | The Race of Life</a></h3>
+<pre><code>Our Heavenly Father did not launch us on our eternal
+voyage without providing the means whereby we could 
+receive from Him guidance to ensure our safe return. 
+I speak of prayer. I speak too of the whisperings from 
+that still, small voice; and I do not overlook the holy 
+scriptures, which contain the word of the Lord and the words of the prophets—provided
+to us to help us successfully cross the finish line.
+</code></pre>
+<h3 id="elder-utchdorf-october-2023-general-conference--the-prodigal-and-the-road-that-leads-home"><a class="header" href="#elder-utchdorf-october-2023-general-conference--the-prodigal-and-the-road-that-leads-home">Elder Utchdorf: October 2023 General Conference | The Prodigal and the Road that Leads Home</a></h3>
+<pre><code>Our Heavenly Father will run to us, His heart overflowing 
+with love and compassion. He will embrace us; place a 
+robe around our shoulders, a ring on our finger,
+and sandals on our feet; and proclaim, “Today we celebrate! 
+For my child, who once was dead, has come back to life!”
+</code></pre>
+<h3 id="president-nelson-april-2020-general-conference-hear-him"><a class="header" href="#president-nelson-april-2020-general-conference-hear-him">President Nelson: April 2020 General Conference| Hear Him</a></h3>
+<pre><code>The very first word in the Doctrine and Covenants is
+hearken. It means “to listen with the intent to obey.”
+To hearken means to “hear Him”—to hear what the Savior says
+and then to heed His counsel. In those two words—“Hear Him”—God 
+gives us the pattern for success, happiness, and 
+joy in this life. We are to hear the words of the Lord,
+hearken to them, and heed what He has told us!
+</code></pre>
+<h3 id="elder-christofferson-oct-2019--the-joy-of-the-saints"><a class="header" href="#elder-christofferson-oct-2019--the-joy-of-the-saints">Elder Christofferson: Oct 2019 | The Joy of the Saints</a></h3>
+<pre><code>God sees things in their true perspective, and
+He shares that perspective with us through His commandments,
+effectively guiding us around the pitfalls and potholes of mortality
+toward eternal joy. The Prophet Joseph Smith explained: “Whe
+n His commandments teach us, it is in view of eternity; for
+we are looked upon by God as though we were in eternity; God dwells
+in eternity, and does not view things as we do.”
+</code></pre>
+<h3 id="elder-christofferson-april-2011--as-many-as-i-love-i-rebuke-and-chasten"><a class="header" href="#elder-christofferson-april-2011--as-many-as-i-love-i-rebuke-and-chasten">Elder Christofferson: April 2011 | "As Many as I Love, I Rebuke and Chasten"</a></h3>
+<pre><code> It is this: willingly to accept and even seek correction. Correction 
+ is vital if we would conform our lives “unto a perfect man, [that is,]
+ unto the measure of the stature of the fulness of Christ” (Ephesians 4:13).
+ Paul said of divine correction or chastening, “For whom the Lord 
+ loveth he chasteneth” (Hebrews 12:6). Though it is often difficult to endure, 
+ truly we ought to rejoice that God considers us worth the time and trouble to correct.
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teaching-truth-with-love"><a class="header" href="#teaching-truth-with-love">Teaching Truth with Love</a></h1>
+<p>5/6 living</p>
+<p>MISSING 2</p>
+<h2 id="summary-3"><a class="header" href="#summary-3">Summary:</a></h2>
+<h3 id="elder-gong-oct-2023-general-conferece--love-is-spoken-here"><a class="header" href="#elder-gong-oct-2023-general-conferece--love-is-spoken-here">Elder Gong: Oct 2023 General Conferece | Love is Spoken Here</a></h3>
+<pre><code>The words we use can draw us closer to or distance us
+from other Christians and friends. Sometimes we speak of
+missionary work, temple work, humanitarian and welfare 
+work in ways that may cause others to think we believe 
+we work on our own. Let us always speak with warm and 
+reverent gratitude for God’s work and glory and the merits, mercy, 
+and grace of Jesus Christ and His atoning sacrifice.
+</code></pre>
+<h3 id="elder-utchdorf-oct-2008-general-conference--lift-where-you-stand"><a class="header" href="#elder-utchdorf-oct-2008-general-conference--lift-where-you-stand">Elder Utchdorf: Oct 2008 General Conference | Lift Where you Stand</a></h3>
+<pre><code>But sometimes we do not hear the rest of what the Lord
+is telling us. “Although you are worthy to serve in this
+position,” He may say, “this is not my calling for you. It is my desire instead that you
+lift where you stand.” God knows what is best for us.
+</code></pre>
+<h3 id="elder-holland-oct-2022-general-conference--lifted-up-on-the-cross"><a class="header" href="#elder-holland-oct-2022-general-conference--lifted-up-on-the-cross">Elder Holland: Oct 2022 General Conference | Lifted Up on the Cross</a></h3>
+<pre><code>As we take up our crosses and follow Him, it would be tragic 
+indeed if the weight of our challenges did not make us more
+empathetic for and more attentive to the burdens being carried 
+by others. It is one of the most powerful paradoxes of the
+Crucifixion that the arms of the Savior were stretched wide 
+open and then nailed there, unwittingly but accurately portraying 
+that every man, woman, and child in the entire human family is not only welcome
+but invited into His redeeming, exalting embrace.
+</code></pre>
+<h3 id="elder-hales-april-2017-general-conference--becoming-a-disciple-of-our-lord-jesus-christ"><a class="header" href="#elder-hales-april-2017-general-conference--becoming-a-disciple-of-our-lord-jesus-christ">Elder Hales: April 2017 General Conference | Becoming a Disciple of Our Lord Jesus Christ</a></h3>
+<pre><code>This patience, Peter teaches, leads us to godliness. As the Father 
+is patient with us, His children, we become patient with one another 
+and ourselves. We delight in the agency of others and the opportunity
+it gives them to grow “line upon line,” “brighter and brighter until the perfect day.”
+</code></pre>
+<h3 id="elder-utchdorf-april-2017--the-greatest-among-you"><a class="header" href="#elder-utchdorf-april-2017--the-greatest-among-you">Elder Utchdorf: April 2017 | The Greatest Among You</a></h3>
+<pre><code>I can almost see the Savior, looking with infinite love into the faces of those faithful
+and believing disciples. I can almost hear His pleading voice:
+“This is not the way it shall be among you. Instead, whosoever will be great among you, 
+shall be your minister: And whosoever of you will be the chiefest, shall be servant of all.”
+</code></pre>
+<pre><code>We who have received a knowledge of the great plan of happiness—and 
+its implementing commandments—should feel a desire to share that knowledge
+since it makes all the difference here and in eternity. And if we ask, 
+“Who is my neighbor that I should warn?” surely the answer will be found in a parable that begins,
+“A certain man went down from Jerusalem to Jericho, and fell among thieves,” and so forth.
+</code></pre>
+<h3 id="elder-christofferson-april-2017--the-voice-of-warning"><a class="header" href="#elder-christofferson-april-2017--the-voice-of-warning">Elder Christofferson: April 2017 | The Voice of Warning</a></h3>
+<h3 id="-5"><a class="header" href="#-5"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-6"><a class="header" href="#-6"></a></h3>
+<pre><code>
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="take-charge-of-your-testimony"><a class="header" href="#take-charge-of-your-testimony">Take Charge of Your Testimony</a></h1>
+<p>1/6 living</p>
+<p>MISSING 6</p>
+<h2 id="summary-4"><a class="header" href="#summary-4">Summary</a></h2>
+<h3 id="elder-bednar-september-2007-ensign--seek-learning-by-faith"><a class="header" href="#elder-bednar-september-2007-ensign--seek-learning-by-faith">Elder Bednar: September 2007 Ensign | Seek Learning by Faith</a></h3>
+<pre><code>Nephi teaches us, “When a man speaketh by the power of
+the Holy Ghost the power of the Holy Ghost carrieth 
+[the message] unto the hearts of the children of men” 
+(2 Nephi 33:1). Please notice how the power of the 
+Spirit carries the message unto but not necessarily 
+into the heart. A teacher can explain, demonstrate, 
+persuade, and testify, and do so with great spiritual 
+power and effectiveness. Ultimately, however, the content 
+of a message and the witness of the Holy Ghost penetrate 
+into the heart only if a receiver allows them to enter. 
+Learning by faith opens the pathway into the heart.
+</code></pre>
+<h3 id="president-monson-oct-2014-general-conference--ponder-the-path-of-thy-feet"><a class="header" href="#president-monson-oct-2014-general-conference--ponder-the-path-of-thy-feet">President Monson: Oct 2014 General Conference | Ponder the Path of thy Feet</a></h3>
+<pre><code>We need not walk by the shores of Galilee or among
+the Judean hills to walk where Jesus walked. All of us
+can walk the path He walked when, with His words ringing
+in our ears, His Spirit filling our hearts, and His
+teachings guiding our lives, we choose to follow Him
+as we journey through mortality. His example lights the way.
+Said He, “I am the way, the truth, and the life.”
+</code></pre>
+<h3 id="-7"><a class="header" href="#-7"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-8"><a class="header" href="#-8"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-9"><a class="header" href="#-9"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-10"><a class="header" href="#-10"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-11"><a class="header" href="#-11"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-12"><a class="header" href="#-12"></a></h3>
+<pre><code>
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="repetance-is-joyful"><a class="header" href="#repetance-is-joyful">Repetance is Joyful</a></h1>
+<p>DONE</p>
+<h2 id="summary-5"><a class="header" href="#summary-5">Summary</a></h2>
+<p>Upon finishing and reviewing this section of scripture that I have found
+I feel impressed that if I am to continually find joy in repentance, I need to
+strive to cherish those things that Christ has done for me that allow me to repent.
+These things include the atoning sacrifice he made for all of us. The main way I need to
+remember his sacrifice is through the sacrament. However it is not as simple as
+merely taking the sacrament each week, but it comes from communicating with
+the Lord prior to renewing my covenants. It also comes from being as prepared
+as I can be for the ordinance on a weekly basis. I should arrive early, and
+participate. Listen to the speakers and the music. Another impression I have
+had is that I can pray that the Lord will continually fill me with the Joy of repentance
+as I participate daily in the practice. I feel strongly that the Lord will bless me to find
+the Joy of repentance daily once again.</p>
+<h3 id="elder-renlund-oct-2022-general-conference--a-framework-for-personal-repentence"><a class="header" href="#elder-renlund-oct-2022-general-conference--a-framework-for-personal-repentence">Elder Renlund: Oct 2022 General Conference | A Framework for Personal Repentence</a></h3>
+<pre><code>If we have repented, been filled with joy and peace of conscience, 
+and received a remission of our sins, we do not need to ask again
+but can trust the answer God has already given.
+</code></pre>
+<h3 id="elder-holland-oct-2021-general-conference--the-greatest-possesssion"><a class="header" href="#elder-holland-oct-2021-general-conference--the-greatest-possesssion">Elder Holland: Oct 2021 General Conference | The Greatest Possesssion</a></h3>
+<pre><code>Of course, we all have some habits or flaws or personal
+history that could keep us from complete spiritual immersion
+in this work. But God is our Father and is exceptionally 
+good at forgiving and forgetting sins we have forsaken, 
+perhaps because we give Him so much practice in doing so. 
+In any case, there is divine help for every one of 
+us at any hour we feel to make a change in our behavior. 
+</code></pre>
+<h3 id="elder-soares-april-2021-general-conference--jesus-christ-the-caregiver-of-the-soul"><a class="header" href="#elder-soares-april-2021-general-conference--jesus-christ-the-caregiver-of-the-soul">Elder Soares: April 2021 General Conference | Jesus Christ: The Caregiver of the Soul</a></h3>
+<pre><code>My dear friends, I testify to you that as we genuinely repent of our sins,
+we allow the atoning sacrifice of Christ to become wholly effective in our life.
+We will become free from the bondage of sin, find joy in our
+earthly journey, and become eligible to receive eternal salvation,
+which was prepared from the foundation of the world 
+for all who believe in Jesus Christ and come unto Him.
+</code></pre>
+<h3 id="elder-renlund-april-2022-general-conference--your-divine-nature-and-eternal-destiny-1"><a class="header" href="#elder-renlund-april-2022-general-conference--your-divine-nature-and-eternal-destiny-1">Elder Renlund: April 2022 General Conference | Your Divine Nature and Eternal Destiny</a></h3>
+<pre><code>Even after sincere repentance, however, we may stumble.
+Stumbling does not mean that the repentance was inadequate 
+but may simply reflect human weakness. How comforting to know 
+that “the Lord sees weaknesses differently than He [sees] 
+rebellion.” We should not doubt the Savior’s ability to help us with our weaknesses, because “when the 
+Lord speaks of weaknesses, it is always with mercy.”
+</code></pre>
+<h3 id="elder-christofferson-october-2010-general-conference--reflections-on-a-consecrated-life"><a class="header" href="#elder-christofferson-october-2010-general-conference--reflections-on-a-consecrated-life">Elder Christofferson: October 2010 General Conference | Reflections on a Consecrated Life</a></h3>
+<pre><code>Consecration therefore means repentance. Stubbornness, rebellion,
+and rationalization must be abandoned, and in their place submission,
+a desire for correction, and acceptance of all that the Lord may require. 
+This is what King Benjamin called putting off the natural man, yielding
+to the enticings of the Holy Spirit, and becoming “a saint through the
+atonement of Christ the Lord” (Mosiah 3:19). Such a one is promised
+the enduring presence of the Holy Spirit, a promise remembered 
+and renewed each time a repentant soul partakes of the sacrament of the Lord’s Supper
+</code></pre>
+<h3 id="elder-anderson-october-2010-general-conference--never-leave-him"><a class="header" href="#elder-anderson-october-2010-general-conference--never-leave-him">Elder Anderson: October 2010 General Conference | Never Leave Him</a></h3>
+<pre><code>The beautiful lesson we learn from Frederick G. Williams is that “whatever his personal
+weaknesses, he had the strength of character to [renew] his loyalty to the [Lord,] the
+Prophet and … to the Church, when it would have been so easy to have disintegrated in 
+bitterness.” In the spring of 1840, he presented himself at a general conference,
+humbly asking forgiveness for his past conduct and expressing his determination to do the will of God in the future. His case was presented 
+by Hyrum Smith, and he was freely forgiven. He died a faithful member of the Church.
+</code></pre>
+<h3 id="president-oaks-october-2010-general-conference--two-lines-of-communication"><a class="header" href="#president-oaks-october-2010-general-conference--two-lines-of-communication">President Oaks: October 2010 General Conference | Two Lines of Communication</a></h3>
+<pre><code>Similarly, we cannot communicate reliably through the direct, personal line
+if we are disobedient to or out of harmony with the priesthood line. The 
+Lord has declared that “the powers of heaven cannot be controlled nor handled only upon the principles of righteousness”
+</code></pre>
+<h3 id="elder-cook-april-2010-general-conference--we-follow-jesus-christ"><a class="header" href="#elder-cook-april-2010-general-conference--we-follow-jesus-christ">Elder Cook: April 2010 General Conference | We Follow Jesus Christ</a></h3>
+<pre><code>If we are to be His disciples and to be committed members of His Church,
+we must remember and reverence the sacrament. It allows each of us to express
+with broken hearts and contrite spirits our willingness to follow the
+Savior, to repent, and to become a Saint through the Atonement of Christ.
+The sacrament allows us to witness to God that we will remember His
+Son and keep His commandments as we renew our baptismal covenant.
+This increases our love and appreciation for both the Father and the Son.
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="diligence-in-gospel-living"><a class="header" href="#diligence-in-gospel-living">Diligence in Gospel Living</a></h1>
+<p>2/6 living</p>
+<p>MISSING 5</p>
+<h2 id="summary-6"><a class="header" href="#summary-6">Summary</a></h2>
+<h3 id="president-oaks-oct-2018-april-general-conference--small-and-simple-things"><a class="header" href="#president-oaks-oct-2018-april-general-conference--small-and-simple-things">President Oaks: Oct 2018 April General Conference | Small and Simple Things</a></h3>
+<pre><code>None of these desirable small and simple things will lift us to
+great things unless they are practiced consistently and continuously.
+President Brigham Young was reported as saying:
+“Our lives are made up of little, simple circumstances that amount
+to a great deal when they are brought together,
+and sum up the whole life of the man or woman.”
+</code></pre>
+<h3 id="elder-anderson-oct-2008--you-know-enough"><a class="header" href="#elder-anderson-oct-2008--you-know-enough">Elder Anderson: Oct 2008 | You Know Enough</a></h3>
+<pre><code>We then remain steady and patient as we progress
+through mortality. At times, the Lord’s answer will be,
+“You don’t know everything, but you know enough”—enough to
+keep the commandments and to do what is right.
+Remember Nephi’s words: “I know that he loveth his children;
+nevertheless, I do not know the meaning of all things.”
+</code></pre>
+<h3 id="elder-scott-october-2010--the-transforming-power-of-faith-and-character"><a class="header" href="#elder-scott-october-2010--the-transforming-power-of-faith-and-character">Elder Scott: October 2010 | The Transforming Power of Faith and Character</a></h3>
+<pre><code>We become what we want to be by consistently being what we want to become
+each day. Righteous character is a precious manifestation of what you are
+becoming. Righteous character is more valuable than any material object
+you own, any knowledge you have gained through study, or any goals you
+have attained no matter how well lauded by mankind. In the next life your righteous 
+character will be evaluated to assess how well you used the privilege of mortality.
+</code></pre>
+<h3 id="-13"><a class="header" href="#-13"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-14"><a class="header" href="#-14"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-15"><a class="header" href="#-15"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-16"><a class="header" href="#-16"></a></h3>
+<pre><code>
+</code></pre>
+<h3 id="-17"><a class="header" href="#-17"></a></h3>
+<pre><code>
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scriptures-the-font-of-living-water"><a class="header" href="#scriptures-the-font-of-living-water">Scriptures, the Font of Living Water</a></h1>
+<p>DONE</p>
+<h2 id="summary-7"><a class="header" href="#summary-7">Summary</a></h2>
+<p>The scriptures are the Lord's counsel for the world. Without the daily
+immersion of the scriptures how can we ever truly come to know the
+Lord. The Book of Mormon is God's most pure form of written word. God
+expects us and has counseled us on countless occasions that we should
+imemerse ourselves in these words. When we want to speak with the Lord we
+pray, but when we want the Lord to speak with us we should open the scriptures.
+One of the most important things I was reminded in this topic is that we have
+prophetic promises that as we read the Book of Mormon daily, we will make better
+decisions daily. Another important thing is that if the apostles have need to
+study daily we have just as large a need to do the same. There is also profound
+promises that reading the scriptures with those we love will improve relationships
+and bring peace into families or households.</p>
+<h3 id="president-nelson-oct-2017-general-conference--the-book-of-mormon-where-would-your-life-be-without-it"><a class="header" href="#president-nelson-oct-2017-general-conference--the-book-of-mormon-where-would-your-life-be-without-it">President Nelson: Oct 2017 General Conference | The Book of Mormon, Where would your life be without it.</a></h3>
+<pre><code>My dear brothers and sisters, I promise that as you 
+prayerfully study the Book of Mormon every day, you 
+will make better decisions—every day. I promise that as you 
+ponder what you study, the windows of heaven will open, 
+and you will receive answers to your own questions and 
+direction for your own life. I promise that as you daily 
+immerse yourself in the Book of Mormon, you can be immunized 
+against the evils of the day, even the gripping 
+plague of pornography and other mind-numbing addictions.
+</code></pre>
+<h3 id="elder-bednar-feb-2007-byu-speech--a-reservoir-of-living-water"><a class="header" href="#elder-bednar-feb-2007-byu-speech--a-reservoir-of-living-water">Elder Bednar: Feb 2007 BYU Speech | A Reservoir of Living Water</a></h3>
+<pre><code>The scriptures contain the words of Christ and are a 
+reservoir of living water to which we have ready access 
+and from which we can drink deeply and long. You and 
+I must look to and come unto Christ, who is “the fountain 
+of living waters” (1 Nephi 11:25; compare Ether 8:26, 12:28),
+by reading (see Mosiah 1:5), studying (see D&amp;C 26:1), 
+searching (see John 5:39; Alma 17:2), and feasting (see 2 Nephi 32:3) 
+upon the words of Christ as contained in the holy scriptures. 
+By so doing, we can receive both spiritual
+direction and protection during our mortal journey.
+</code></pre>
+<h3 id="elder-soares-april-2020-general-conference--the-coming-forth-of-the-book-of-mormon"><a class="header" href="#elder-soares-april-2020-general-conference--the-coming-forth-of-the-book-of-mormon">Elder Soares: April 2020 General Conference | The Coming Forth of the Book of Mormon</a></h3>
+<pre><code>With that promise in mind, earnestly seeking to know more about
+the truth of it, and in a spirit of prayer, I studied the Book of
+Mormon, little by little, as I completed the weekly assigned seminary
+lessons. I remember, like it was yesterday, that a warm feeling gradually
+began swelling in my soul and filling my heart, enlightening
+my understanding, and becoming more and more delightful, as described 
+by Alma in his preaching the word of God to his people. That feeling 
+eventually turned into knowledge that took root in my heart and 
+became the foundation of my testimony of the significant 
+events and teachings found in this sacred book.
+</code></pre>
+<h3 id="elder-scott-october-2011--the-power-of-scripture"><a class="header" href="#elder-scott-october-2011--the-power-of-scripture">Elder Scott: October 2011 | The Power of Scripture</a></h3>
+<pre><code>Scriptures are like packets of light that illuminate
+our minds and give place to guidance and inspiration 
+from on high. They can become the key to open the 
+channel to communion with our Father in Heaven and His Beloved Son, Jesus Christ.
+</code></pre>
+<h3 id="elder-christofferson-april-2010--the-blessing-of-scriptures"><a class="header" href="#elder-christofferson-april-2010--the-blessing-of-scriptures">Elder Christofferson: April 2010 | The Blessing of Scriptures</a></h3>
+<pre><code>Through the scriptures, God does indeed “show forth his power” to save and exalt 
+His children. By His word, as Alma said, He enlarges our memory,
+sheds light on falsehood and error, and brings us to repentance and to rejoice in Jesus Christ, our Redeemer.
+</code></pre>
+<h3 id="elder-scott-april-2013--for-peace-at-home"><a class="header" href="#elder-scott-april-2013--for-peace-at-home">Elder Scott: April 2013 | For Peace at Home</a></h3>
+<pre><code>I’m sure you can identify the fundamental principles that center
+your home on the Savior. The prophetic counsel to have daily
+personal and family prayer, daily personal and family scripture
+study, and weekly family home evening are the essential,
+weight-bearing beams in the construction of a Christ-centered home. Without these regular practices it 
+will be difficult to find the desired and much-needed peace and refuge from the world.
+</code></pre>
+<h3 id="president-nelson-april-2013--catch-the-wave"><a class="header" href="#president-nelson-april-2013--catch-the-wave">President Nelson: April 2013 | Catch the Wave</a></h3>
+<pre><code>The book of Doctrine and Covenants contains many additional revelations
+given to the Prophet Joseph Smith. Through him we have received more
+pages of scripture than we have from any other prophet. In
+what must have been a wistful moment, he said to the Saints in Nauvoo, Illinois,
+“I never told you I was perfect; but there is no error in the revelations which I have taught.”
+</code></pre>
+<h3 id="president-nelson-october-2007--scriptural-witnesses"><a class="header" href="#president-nelson-october-2007--scriptural-witnesses">President Nelson: October 2007 | Scriptural Witnesses</a></h3>
+<pre><code>Love for the Book of Mormon expands one’s love for the Bible and vice versa.
+Scriptures of the Restoration do not compete with the Bible; they complement
+the Bible. We are indebted to martyrs who gave their lives so that we could
+have the Bible. It establishes the everlasting nature of the gospel and of
+the plan of happiness. The Book of Mormon restores and underscores biblical 
+doctrines such as tithing, the temple, the Sabbath day, and the priesthood.
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

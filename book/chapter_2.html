@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Power of Jesus Christ and your Covenants - Practicum</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">2.</strong> Our Divine Identity</a></li><li class="chapter-item expanded "><a href="chapter_2.html" class="active"><strong aria-hidden="true">3.</strong> The Power of Jesus Christ and your Covenants</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">4.</strong> Let God Preveil and Follow his Prophets</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">5.</strong> Teaching Truth with Love</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">6.</strong> Take Charge of Your Testimony</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">7.</strong> Repetance is Joyful</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">8.</strong> Diligence in Gospel Living</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">9.</strong> Scriptures, the Font of Living Water</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Practicum</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-power-of-jesus-christ-and-your-covenants"><a class="header" href="#the-power-of-jesus-christ-and-your-covenants">The Power of Jesus Christ and your Covenants</a></h1>
+<p>DONE</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>God gives us covenants to push us to become more than we otherwise would be. The covenant
+path is a way to open the heavens to bless us in our mortal existence. Our covenants
+are what allow us to become more perfect, and are the only way that we can one day become
+like our beloved Father in Heaven or our Savior. The covenant path is also not an exclusive
+thing, but rather anyone who is willing to accept and follow it can receive of the same blessings.
+It is part of our job as disciples who are walking the covenant path to extend our arms
+and raise our voices to find those whom are lost in this world and invite them to walk the path
+of happiness with us. Additionally if we ever step off the path God is waiting for us to get back on.
+He will help us to do so, and will be patient for however long that process takes.</p>
+<h3 id="president-oaks-oct-2023-general-conference--kingdoms-of-glory"><a class="header" href="#president-oaks-oct-2023-general-conference--kingdoms-of-glory">President Oaks: Oct 2023 General Conference | Kingdoms of Glory</a></h3>
+<pre><code>From such teachings we conclude that the Final Judgment
+is not just an evaluation of a sum total of good and 
+evil acts—what we have done. It is based on the final 
+effect of our acts and thoughts—what we have become.
+We qualify for eternal life through a process of conversion.
+As used here, this word of many meanings signifies a profound change of nature. 
+It is not enough for anyone just to go through the motions. 
+The commandments, ordinances, and covenants of the gospel are not a 
+list of deposits required to be made in some heavenly account. 
+The gospel of Jesus Christ is a plan that shows us how to become
+what our Heavenly Father desires us to become.
+</code></pre>
+<h3 id="elder-gong-april-2022-general-conference--we-each-have-a-story"><a class="header" href="#elder-gong-april-2022-general-conference--we-each-have-a-story">Elder Gong: April 2022 General Conference | We Each Have a Story</a></h3>
+<pre><code>God wants our families to be happy and forever.
+Forever is too long if we make each other unhappy.
+Happy is too short if cherished relationships stop with this
+life. Through sacred covenants, Jesus Christ offers His love,
+power, and grace to change us18 and heal our relationships. 
+Selfless temple service for dear ones makes our Savior’s
+Atonement real for them and us. Sanctified, we can return
+home to God’s presence as families united eternally.
+</code></pre>
+<h3 id="elder-utchdorf-april-2021--god-among-us"><a class="header" href="#elder-utchdorf-april-2021--god-among-us">Elder Utchdorf: April 2021 | God Among Us</a></h3>
+<pre><code>Because of God’s perfect love for us and the eternal sacrifice of 
+Jesus Christ, our sins—both great and small—can be blotted out and remembered no more.
+We can stand before Him pure, worthy, and sanctified.
+</code></pre>
+<h3 id="president-erying-oct-2021-general-conference--the-faith-to-ask-and-then-to-act"><a class="header" href="#president-erying-oct-2021-general-conference--the-faith-to-ask-and-then-to-act">President Erying: Oct 2021 General Conference | The Faith to Ask and Then to Act</a></h3>
+<pre><code>If your faith in Jesus Christ has led to a heart
+softened through the effects of His Atonement, you will
+be more able to feel the whisperings of the Spirit in answer 
+to your prayers. My personal experience is that the still, 
+small voice—which is real—is clear and discernible in my mind
+when I feel an internal quiet and submission to the
+Lord’s will. That feeling of humility can be 
+best described as “Not my will, but thine, be done.”
+</code></pre>
+<h3 id="elder-rasband-oct-2020-general-conference--recommended-to-the-lord"><a class="header" href="#elder-rasband-oct-2020-general-conference--recommended-to-the-lord">Elder Rasband: Oct 2020 General Conference | Recommended to the Lord</a></h3>
+<pre><code>To be “recommended to the Lord” is to be reminded of what 
+is expected of a covenant-keeping Latter-day Saint. My 
+father-in-law, Blaine, saw it as invaluable preparation 
+for the day when he would humbly stand before the Lord.
+</code></pre>
+<h3 id="elder-christofferson-april-2021-general-conference--why-the-covenant-path"><a class="header" href="#elder-christofferson-april-2021-general-conference--why-the-covenant-path">Elder Christofferson: April 2021 General Conference | Why the Covenant Path</a></h3>
+<pre><code>Elder J. Golden Kimball is purported to have said,
+“I may not have [always] walked the straight and narrow,
+but I [try] to cross it as often as I [can].”5 In a more
+serious moment, I am sure Brother Kimball would agree that
+staying on, not just crossing, the covenant path is our
+greatest hope for avoiding avoidable misery on the one hand and successfully 
+dealing with the unavoidable woes of life on the other.
+</code></pre>
+<h3 id="elder-holland-april-2016-general-conference--tomorrow-the-lord-will-do-wonders-among-you"><a class="header" href="#elder-holland-april-2016-general-conference--tomorrow-the-lord-will-do-wonders-among-you">Elder Holland: April 2016 General Conference | Tomorrow the Lord will Do Wonders Among You</a></h3>
+<pre><code>When there was a controversy in the early Church regarding who was
+entitled to heaven’s blessings and who wasn’t, the Lord declared to the
+Prophet Joseph Smith, “Verily I say unto you, [the gifts of God] are 
+given for the benefit of those who love me and keep … my commandments, 
+and [for them] that seeketh so to do.” Boy, aren’t we all thankful for that
+added provision “and … seeketh so to do”! That has been a lifesaver because
+sometimes that is all we can offer! We take some solace in the fact that if
+God were to reward only the perfectly faithful, He wouldn’t have much of a distribution list.
+</code></pre>
+<h3 id="elder-renlund-april-2016-general-conference--that-i-might-draw-all-men-unto-me"><a class="header" href="#elder-renlund-april-2016-general-conference--that-i-might-draw-all-men-unto-me">Elder Renlund: April 2016 General Conference | "That I Might Draw All Men Unto Me"</a></h3>
+<pre><code>The closer we are to Jesus Christ in the thoughts and intents of our hearts,
+the more we appreciate His innocent suffering, the more grateful we are for 
+grace and forgiveness, and the more we want to repent and become like Him. 
+Our absolute distance from Heavenly Father and Jesus Christ is important, 
+but the direction we are heading is even more crucial. God is more pleased 
+with repentant sinners who are trying to draw closer to Him than with self-righteous, faultfinding individuals who, 
+like the Pharisees and scribes of old, do not realize how badly they need to repent.
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter_1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="chapter_3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter_1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="chapter_3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
