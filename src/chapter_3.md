@@ -1,6 +1,5 @@
 # Let God Preveil and Follow his Prophets
 
-DONE
 ## Summary
 
 In this life, God wants nothing more than to be our biggest fan and to support us. 

@@ -1,6 +1,5 @@
 # Repetance is Joyful
 
-DONE
 ## Summary
 
 Upon finishing and reviewing this section of scripture that I have found

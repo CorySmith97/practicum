@@ -1,7 +1,5 @@
 # The Power of Jesus Christ and your Covenants
 
-DONE
-
 ## Summary
 
 God gives us covenants to push us to become more than we otherwise would be. The covenant 

@@ -1,6 +1,5 @@
 # Scriptures, the Font of Living Water
 
-DONE
 ## Summary 
 
 The scriptures are the Lord's counsel for the world. Without the daily 
